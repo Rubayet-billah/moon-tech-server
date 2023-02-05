@@ -38,8 +38,8 @@ const run = async () => {
 
     app.delete("/product/:id", async (req, res) => {
       const id = req.params.id;
-
-      const result = await productCollection.deleteOne({ _id: ObjectId(id) });
+      const filter = { _id: new ObjectId(id) };
+      const result = await productCollection.deleteOne(filter);
       res.send(result);
     });
   } finally {
